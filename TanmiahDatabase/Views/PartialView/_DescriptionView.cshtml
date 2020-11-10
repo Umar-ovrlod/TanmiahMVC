@@ -1,0 +1,82 @@
+﻿@model System.Data.DataTable
+@if (Model != null)
+{
+    for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <div class="container container-medium ">
+            <div class="highlighted-content full-width-before">
+                <div class="outer-container">
+                    <h2 class="heading-bold-primary">@Model.Rows[i][1]</h2>
+                    <p>
+                        @Model.Rows[i][2]
+                    </p>
+                    <p>
+                        @Model.Rows[i][3]
+                    </p>
+                    <p>&nbsp;</p>
+                    <h2 class="heading-bold-primary">Nutrition Per Pack(@Model.Rows[i][4])</h2>
+                    <ul class="feature-listing feature-listing--blocks feature-listing--borders">
+                        <li class="list-item">
+                            <div class="list-content">
+                                <h5 class="list-content__small-heading">Energy</h5>
+                                <h4 class="list-content__heading">
+                                    @Model.Rows[i][5]
+                                    <span class="list-suffix">kcal</span>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-content">
+                                <h5 class="list-content__small-heading">Carbohydrates</h5>
+                                <h4 class="list-content__heading">
+                                    @Model.Rows[i][6]
+                                    <span class="list-suffix">g</span>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-content">
+                                <h5 class="list-content__small-heading">Protiens</h5>
+                                <h4 class="list-content__heading">
+                                    @Model.Rows[i][7]
+                                    <span class="list-suffix">g</span>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-content">
+                                <h5 class="list-content__small-heading">Fat</h5>
+                                <h4 class="list-content__heading">
+                                    @Model.Rows[i][8]
+                                    <span class="list-suffix">g</span>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-content">
+                                <h5 class="list-content__small-heading">Protiens</h5>
+                                <h4 class="list-content__heading">
+                                    @Model.Rows[i][9]
+                                    <span class="list-suffix">g</span>
+                                </h4>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-content">
+                                <h5 class="list-content__small-heading">Fat</h5>
+                                <h4 class="list-content__heading">
+                                    @Model.Rows[i][10]
+                                    <span class="list-suffix">g</span>
+                                </h4>
+                            </div>
+                        </li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h2 class="heading-bold-primary">Want to order in bulk?</h2>
+                    <a href="javascript:void(0)" class="btn btn-primary">ORDER NOW</a>
+                </div>
+            </div>
+        </div>
+
+    }
+}

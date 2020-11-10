@@ -1,0 +1,21 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Tanmiah</title>
+    @Styles.Render("~/Common / css / style - ar.css ? v = 726")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Common/css/style.css" rel="stylesheet" />
+</head>
+<body class="ar preload ">
+
+    @Html.Action("Index", "Banner")
+    @Html.Action("BreadCrumbAction", "BreadCrumb")
+    @Html.Action("CardAction", "Card")
+   @Html.Action("DescriptionAction", "Description")
+       @Html.Action("ListAction","Listing")
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+.footer-links {
+  font-size: 14px;
+  color: $dark-green;
+  font-weight: 300;
+}
+
+footer {
+  margin-top: 73px;
+  a {
+    @extend .footer-links;
+    &:hover{
+      text-decoration: none;
+      color:$orange;
+    }
+  }
+  .ul-compact {
+    li {
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+  }
+  .social-block {
+    margin-top: -2px;
+    overflow: hidden;
+  }
+}
+
+.footer-parent-links {
+  margin-bottom: 29px;
+}
+
+.footer-parent-links, .footer-parent-links a {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.social-block {
+  h4 {
+    color: $dark-green;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -23px -20px -23px;
+  a {
+    position: relative;
+    margin: 0 23px 20px 23px;
+    vertical-align: middle;
+    &:hover{
+      img:first-child{
+        opacity: 0;
+      }
+      img:last-child{
+        opacity: 1;
+      }
+    }
+  }
+  img{
+    transition: opacity .4s ease-in-out;
+  }
+  img:first-child{
+
+  }
+  img:last-child{
+    position: absolute;
+    left:0;
+    top:0;
+    opacity: 0;
+  }
+}
+
+.footer-sitemap {
+  padding: 79px 0 73px 0;
+  border-top: 1px solid rgba(0, 0, 0, .5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+  .col-social {
+    width: 292px;
+  }
+}
+
+.footer-bottom {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  .positioned-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+}
+
+.footer-company-logos {
+  display: flex;
+  align-items: center;
+  padding: 25px 0 20px 0;
+  position: relative;
+  z-index: 1;
+  .company-box {
+    margin-left: 68px;
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+.footer-bottom-contents {
+  max-width: 550px;
+  padding: 30px 0 10px 0;
+}
+
+.footer-bottom-nav {
+  margin-bottom: 15px;
+  a {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 35px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.footer-row-links {
+  .col-3 {
+    padding-right: 5px;
+  }
+}

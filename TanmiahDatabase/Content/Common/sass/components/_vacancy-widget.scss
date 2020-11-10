@@ -1,0 +1,87 @@
+.vacancy-widget {
+  .feature-listing--counters {
+    margin-top: 40px;
+  }
+}
+
+.filter-list-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 50px;
+}
+
+.filter-list {
+  margin: 0;
+  padding: 0 10px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  &__item {
+    color: $dark-green;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 27px;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    min-width: 28px;
+    &.active {
+      &:after {
+        content: '';
+        background-color: $yellow2;
+        width: calc(100% + 8px);
+        min-width: 45px;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: -13px;
+        transform: translateX(-4px);
+      }
+    }
+    &:hover:not(.active) {
+      text-decoration: none;
+      &:after {
+        content: '';
+        background-color: darken($grey, 5%);
+        width: calc(100% + 8px);
+        min-width: 45px;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: -13px;
+        transform: translateX(-4px);
+      }
+    }
+  }
+}
+
+#career-data {
+  &.loader-small {
+    background-color: #fff;
+    min-height: 90px;
+  }
+}
+
+#feature-listing {
+  justify-content:normal;
+  .list-item {
+    cursor: pointer;
+    width: calc(100% / 3);
+    .list-content__small-heading {
+      max-width: 220px;
+    }
+    &:hover{
+
+      .list-content__heading{
+        color: #efba30;
+        transition: 0.5s;
+      }
+    }
+  }
+}
+
+.content-overlay .btn-primary {
+  cursor: pointer;
+}

@@ -1,0 +1,218 @@
+$slider-media-col-width: 59%;
+$slider-slide-vh: 1000px;
+
+.slider-two-cols {
+  position: relative;
+  padding-top: 90px;
+
+
+  .swiper-pagination {
+    right: 54px;
+    left: auto;
+  }
+
+  .swiper-slide {
+    display: flex;
+  }
+
+  .slider-media {
+    display: inline-flex;
+    width: $slider-media-col-width;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+    padding: 0 40px 0 10px;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .slider-content {
+    width: calc(100% - #{$slider-media-col-width});
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 368px;
+    padding-bottom: 40px;
+    h3 {
+      @extend .widgets-heading-1;
+      color: $green2;
+      margin-bottom: 11px;
+      word-break: break-word;
+    }
+    p:last-of-type {
+      ~ .btn {
+        margin-top: 9px;
+      }
+    }
+  }
+
+  .content-img {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  .slide-reverse {
+    flex-direction: row-reverse;
+    .slider-media {
+      padding: 0 10px 0 40px;
+    }
+  }
+
+  .swiper-slide {
+    min-height: $slider-slide-vh;
+    align-items: center;
+
+  }
+
+}
+
+.swiper-pagination-desktop {
+  height: $slider-slide-vh;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  z-index: 2;
+  width: 3px;
+}
+
+.parallax-element {
+  position: absolute;
+}
+
+.parallax-container {
+  position: relative;
+  .single-img {
+    display: none;
+  }
+}
+
+#parallax-container-1 {
+  height: 710px;
+}
+
+#parallax-container-2 {
+  height: 754px;
+}
+
+#parallax-item-1 {
+  bottom: 80px;
+  right: 130px;
+}
+
+#parallax-item-2 {
+  bottom: -180px;
+  right: 76px;
+}
+
+#parallax-item-3 {
+  bottom: 422px;
+  right: 246px;
+}
+
+#parallax-item-4 {
+  bottom: 282px;
+  right: 141px;
+}
+
+#parallax-item-5 {
+  bottom: 480px;
+  right: 314px;
+}
+
+#parallax-item-6 {
+  bottom: 620px;
+  right: 114px;
+}
+
+#parallax-item-7 {
+  bottom: 450px;
+  right: 144px;
+}
+
+#parallax-item-8 {
+  bottom: 474px;
+  right: 254px;
+}
+
+#parallax-item-21 {
+  bottom: 412px;
+  left: 78px;
+}
+
+#parallax-item-22 {
+  bottom: 98px;
+  left: 118px;
+}
+
+#parallax-item-23 {
+  bottom: 0;
+  left: 57px;
+}
+
+#parallax-item-24 {
+  bottom: 548px;
+  left: 398px;
+}
+
+#parallax-item-25 {
+  bottom: 658px;
+  left: 134px;
+}
+
+#parallax-item-26 {
+  bottom: 479px;
+  left: 130px;
+}
+
+#parallax-item-27 {
+  bottom: 710px;
+  left: 162px;
+  z-index: 2;
+}
+
+#parallax-item-28 {
+  bottom: 710px;
+  left: 252px;
+  z-index: 2;
+}
+
+#parallax-item-28-2 {
+  bottom: 620px;
+  left: 272px;
+  z-index: 2;
+}
+
+#parallax-item-29 {
+  bottom: 485px;
+  left: 210px;
+
+}
+
+#parallax-item-30 {
+  bottom: 648px;
+  left: 209px;
+}
+
+#parallax-item-31 {
+  bottom: 672px;
+  left: 120px;
+}
+
+#parallax-item-32 {
+  bottom: 642px;
+  left: 316px;
+}
+
+#parallax-item-33 {
+  bottom: 350px;
+  left: 251px;
+}
+
+#parallax-item-34 {
+  bottom: 790px;
+  left: 371px;
+  z-index: 2;
+}

@@ -1,0 +1,43 @@
+/*Vendors*/
+
+@import "vendors/_bootstrap-reboot";
+@import "vendors/_bootstrap-grid";
+@import "vendors/_swiper";
+
+/*rtl:begin:ignore*/
+@import "../css/icons";
+/*rtl:end:ignore*/
+
+/*Globals*/
+@import "globals/_variables";
+@import "globals/_colors";
+@import "globals/_fonts";
+@import "globals/_content-editor";
+@import "globals/_global";
+@import "globals/_browser-specific";
+
+
+/*Components - Project specific*/
+@import "components/_header";
+@import "components/_footer";
+@import "components/_common";
+@import "components/_slider-two-cols";
+@import "components/_overlay";
+@import "components/_vacancy-widget";
+
+@import "components/_listing-card";
+@import "components/_listing-slider";
+@import "components/_breadcrumbs";
+@import "components/_feature-listing";
+@import "components/_listing-filter";
+@import "components/_highlighted-content";
+@import "components/_form-elements";
+@import "components/_team-listing";
+@import "components/_slider";
+
+
+/*rtl:begin:ignore*/
+@import "components/_arabic.scss";
+/*rtl:end:ignore*/
+
+@import "components/_responsive";

@@ -1,0 +1,21 @@
+html {
+  font-size: 15px;
+}
+
+.ar {
+
+
+  .swiper-button-prev, .swiper-button-next {
+    transform: rotate(180deg);
+  }
+
+  .spotlight-graphic img,
+  .slider-two-cols .single-img,
+  .slider-two-cols  .content-img img,
+  .parallax-element{
+    transform: scale(-1, 1);
+  }
+
+}
+
+
