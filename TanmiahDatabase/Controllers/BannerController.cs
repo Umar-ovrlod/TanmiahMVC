@@ -19,11 +19,15 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblProduct = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
+                SqlCommand cmd = new SqlCommand("spBanner", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Select");
+                cmd.Parameters.AddWithValue("@prodID", 1);
                 sqlConn.Open();
-                SqlDataAdapter sqlData = new SqlDataAdapter("Select * from Banner where ProductID=1", sqlConn);
-                sqlData.Fill(dtblProduct);
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblProduct.Load(sqlread);
+                sqlConn.Close();
             }
-
             return PartialView("_BannerView", dtblProduct);
         }
 
@@ -41,18 +45,22 @@ namespace TanmiahDatabase.Controllers
 
         // POST: Banner/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(BannerModel bannerModel)
         {
-            try
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                SqlCommand sqlCmd = new SqlCommand("spBanner", sqlCon);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@prodType", bannerModel.ProductType);
+                sqlCmd.Parameters.AddWithValue("@prodTitle", bannerModel.ProductTitle);
+                sqlCmd.Parameters.AddWithValue("@prodDesc", bannerModel.ProductDescription);
+                sqlCmd.Parameters.AddWithValue("@prodImage", bannerModel.ProductImage);
+                sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
+                sqlCon.Open();
+                SqlDataReader sqlread = sqlCmd.ExecuteReader();
+                sqlCon.Close();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         // GET: Banner/Edit/5
@@ -62,11 +70,16 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblBanner = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
+                //sqlConn.Open();
+                //string query = "Select * from Banner where ProductID=@ProductID";
+                SqlCommand cmd = new SqlCommand("spBanner", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Select");
+                cmd.Parameters.AddWithValue("@prodID", id);
                 sqlConn.Open();
-                string query = "Select * from Banner where ProductID=@ProductID";
-                SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlConn);
-                sqlDa.SelectCommand.Parameters.AddWithValue("@ProductID", id);
-                sqlDa.Fill(dtblBanner);
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblBanner.Load(sqlread);
+                sqlConn.Close();
             }
             if (dtblBanner.Rows.Count == 1)
             {
@@ -86,15 +99,17 @@ namespace TanmiahDatabase.Controllers
         {
             using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
+                SqlCommand sqlCmd = new SqlCommand("spBanner", sqlCon);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@prodID", bannerModel.ProductID);
+                sqlCmd.Parameters.AddWithValue("@prodType", bannerModel.ProductType);
+                sqlCmd.Parameters.AddWithValue("@prodTitle", bannerModel.ProductTitle);
+                sqlCmd.Parameters.AddWithValue("@prodDesc", bannerModel.ProductDescription);
+                sqlCmd.Parameters.AddWithValue("@prodImage", bannerModel.ProductImage);
+                sqlCmd.Parameters.AddWithValue("@StatementType", "Update");
                 sqlCon.Open();
-                string query = "update Banner Set ProductType = @Type, ProductTitle = @Title, ProductDescription = @Desc where ProductID = @ID";
-                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@ID", bannerModel.ProductID);
-                sqlCmd.Parameters.AddWithValue("@Type", bannerModel.ProductType);
-                sqlCmd.Parameters.AddWithValue("@Title", bannerModel.ProductTitle);
-                sqlCmd.Parameters.AddWithValue("@Desc", bannerModel.ProductDescription);
-               
-                sqlCmd.ExecuteNonQuery();
+                SqlDataReader sqlread = sqlCmd.ExecuteReader();
+                sqlCon.Close();
             }
             return RedirectToAction("Index", "Home");
         }
@@ -107,18 +122,30 @@ namespace TanmiahDatabase.Controllers
 
         // POST: Banner/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, BannerModel bannerModel)
         {
-            try
+            DataTable dtblBanner = new DataTable();
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                // TODO: Add delete logic here
-
+                SqlCommand cmd = new SqlCommand("spBanner", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Delete");
+                cmd.Parameters.AddWithValue("@prodID", id);
+                sqlConn.Open();
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblBanner.Load(sqlread);
+                sqlConn.Close();
+            }
+            if (dtblBanner.Rows.Count == 1)
+            {
+                bannerModel.ProductID = Convert.ToInt32(dtblBanner.Rows[0][0].ToString());
+                bannerModel.ProductType = dtblBanner.Rows[0][1].ToString();
+                bannerModel.ProductTitle = dtblBanner.Rows[0][2].ToString();
+                bannerModel.ProductDescription = dtblBanner.Rows[0][3].ToString();
+                return View(bannerModel);
+            }
+            else
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

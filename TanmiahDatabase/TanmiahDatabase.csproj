@@ -387,6 +387,8 @@
     <Content Include="Views\PartialView\_DescriptionView.cshtml" />
     <Content Include="Views\PartialView\_ListingView.cshtml" />
     <Content Include="Views\Banner\Edit.cshtml" />
+    <Content Include="Views\Banner\Create.cshtml" />
+    <Content Include="Views\Banner\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
