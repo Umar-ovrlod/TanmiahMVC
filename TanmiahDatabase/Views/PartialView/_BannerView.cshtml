@@ -1,25 +1,30 @@
 ﻿@model System.Data.DataTable
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+
 @if (Model != null)
 {
     for (int i = 0; i < Model.Rows.Count; i++)
-     {
-<div class="spotlight spotlight--green-box">
-    <div class="banner">
-        <div>
-            <img class="object-fit desktop" src=@Url.Content(Convert.ToString(Model.Rows[i][4])) alt="Tanmiah Spotlight">
+    {
+        <div class="spotlight spotlight--green-box">
+            <div class="banner">
+                <div>
+                    <img class="object-fit desktop" src=@Url.Content(Convert.ToString(Model.Rows[i][4])) alt="Tanmiah Spotlight">
+                </div>
+            </div>
+
+            <div class="text-box bg-light-green">
+                <div style="float:right; padding-right:-10px;"><span><a href="@Url.Action("Edit","Banner", new {@id=Model.Rows[i][0]})">Edit</a></span></div>
+                <div class="icon-n-text">
+                    <strong><img src="~/Content/Common/images/spotlight/burger-icon.svg" alt="PROCESSED FOOD"></strong>
+                    <span>@Model.Rows[i][1]</span>
+                </div>
+                <h3 class="text-box__heading">@Model.Rows[i][2]</h3>
+                <p class="text-box__disc">@Model.Rows[i][3]</p>
+            </div>
         </div>
-    </div>
-    
-    <div class="text-box bg-light-green">
-        <div style="float:right; padding-right:-10px;"><span><a href="@Url.Action("Edit","Banner", new {@id=Model.Rows[i][0]})">Edit</a></span></div> 
-        <div class="icon-n-text">
-            <strong><img src="~/Content/Common/images/spotlight/burger-icon.svg" alt="PROCESSED FOOD"></strong>
-            <span>@Model.Rows[i][1]</span>
-        </div>
-        <h3 class="text-box__heading">@Model.Rows[i][2]</h3>
-        <p class="text-box__disc">@Model.Rows[i][3]</p>
-    </div>
-</div>
     }
 }
 

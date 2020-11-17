@@ -1,0 +1,66 @@
+﻿@model TanmiahDatabase.Models.ListingModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="container center">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>ListingModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ListingID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ListingID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ListingImg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ListingImg)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ListingProd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ListingProd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ListingProdTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ListingProdTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ListingProdDet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ListingProdDet)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

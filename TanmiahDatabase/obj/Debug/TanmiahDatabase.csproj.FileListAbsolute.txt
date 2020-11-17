@@ -144,7 +144,6 @@ C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\System.Web.Web
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\System.Web.Helpers.xml
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\System.Web.Mvc.xml
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csprojAssemblyReference.cache
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CoreCompileInputs.cache
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CopyComplete
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.dll

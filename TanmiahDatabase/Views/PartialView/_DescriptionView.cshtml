@@ -6,6 +6,8 @@
         <div class="container container-medium ">
             <div class="highlighted-content full-width-before">
                 <div class="outer-container">
+                    <div style="float:right; padding-right:-10px;"><span><a href="@Url.Action("Edit","Description", new {@id=Model.Rows[i][0]})">Edit</a></span></div>
+
                     <h2 class="heading-bold-primary">@Model.Rows[i][1]</h2>
                     <p>
                         @Model.Rows[i][2]

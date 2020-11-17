@@ -11,12 +11,13 @@
             <img class="video-placeholder--img" src=@Url.Content(Convert.ToString(Model.Rows[i][1])) alt="">
         </div>
         <div class="video-recipe-desc bg-grey">
+            <div style="float:right; padding-right:-10px;"><span><a href="@Url.Action("Edit","Card", new {@id=Model.Rows[i][0]})">Edit</a></span></div>
             <h3 class="video-recipe-desc--heading heading-bold-secondary">
                 @Model.Rows[i][2]
             </h3>
             <p class="video-recipe-desc--text">
                 @Model.Rows[i][3]
-            </p>
+            </p>        
         </div>
     </div>
 </div>

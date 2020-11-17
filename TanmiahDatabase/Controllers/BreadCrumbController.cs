@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using TanmiahDatabase.Models;
 
 namespace TanmiahDatabase.Controllers
 {
@@ -18,11 +19,15 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblProduct = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
+                SqlCommand cmd = new SqlCommand("spBreadcrumb", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Select");
+                cmd.Parameters.AddWithValue("@prodID", 1);
                 sqlConn.Open();
-                SqlDataAdapter sqlData = new SqlDataAdapter("Select * from breadcrumb where ProductID=1", sqlConn);
-                sqlData.Fill(dtblProduct);
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblProduct.Load(sqlread);
+                sqlConn.Close();
             }
-
             return PartialView("_BreadcrumbView", dtblProduct);
         }
 
@@ -57,23 +62,46 @@ namespace TanmiahDatabase.Controllers
         // GET: BreadCrumb/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            BreadcrumbModel breadcrumb = new BreadcrumbModel();
+            DataTable dtblBread = new DataTable();
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                //sqlConn.Open();
+                //string query = "Select * from Banner where ProductID=@ProductID";
+                SqlCommand cmd = new SqlCommand("spBreadcrumb", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Select");
+                cmd.Parameters.AddWithValue("@prodID", id);
+                sqlConn.Open();
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblBread.Load(sqlread);
+                sqlConn.Close();
+            }
+            if (dtblBread.Rows.Count == 1)
+            {
+                breadcrumb.ProductID = Convert.ToInt32(dtblBread.Rows[0][0].ToString());
+                breadcrumb.ProductTitle = dtblBread.Rows[0][2].ToString();
+                return View(breadcrumb);
+            }
+            else
+                return RedirectToAction("Index");
         }
 
         // POST: BreadCrumb/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(BreadcrumbModel breadcrumb)
         {
-            try
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                SqlCommand sqlCmd = new SqlCommand("spBanner", sqlCon);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@prodID", breadcrumb.ProductID);
+                sqlCmd.Parameters.AddWithValue("@prodTitle", breadcrumb.ProductTitle);
+                sqlCon.Open();
+                SqlDataReader sqlread = sqlCmd.ExecuteReader();
+                sqlCon.Close();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: BreadCrumb/Delete/5

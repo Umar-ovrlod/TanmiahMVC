@@ -87,6 +87,7 @@ namespace TanmiahDatabase.Controllers
                 bannerModel.ProductType = dtblBanner.Rows[0][1].ToString();
                 bannerModel.ProductTitle = dtblBanner.Rows[0][2].ToString();
                 bannerModel.ProductDescription = dtblBanner.Rows[0][3].ToString();
+                bannerModel.ProductImage = dtblBanner.Rows[0][4].ToString();
                 return View(bannerModel);
             }
             else
@@ -117,7 +118,31 @@ namespace TanmiahDatabase.Controllers
         // GET: Banner/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            BannerModel bannerModel = new BannerModel();
+            DataTable dtblBanner = new DataTable();
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                //sqlConn.Open();
+                //string query = "Select * from Banner where ProductID=@ProductID";
+                SqlCommand cmd = new SqlCommand("spBanner", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Select");
+                cmd.Parameters.AddWithValue("@prodID", id);
+                sqlConn.Open();
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblBanner.Load(sqlread);
+                sqlConn.Close();
+            }
+            if (dtblBanner.Rows.Count == 1)
+            {
+                bannerModel.ProductID = Convert.ToInt32(dtblBanner.Rows[0][0].ToString());
+                bannerModel.ProductType = dtblBanner.Rows[0][1].ToString();
+                bannerModel.ProductTitle = dtblBanner.Rows[0][2].ToString();
+                bannerModel.ProductDescription = dtblBanner.Rows[0][3].ToString();
+                return View(bannerModel);
+            }
+            else
+                return RedirectToAction("Index");
         }
 
         // POST: Banner/Delete/5

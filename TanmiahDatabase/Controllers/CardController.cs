@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using TanmiahDatabase.Models;
 
 namespace TanmiahDatabase.Controllers
 {
@@ -15,16 +16,22 @@ namespace TanmiahDatabase.Controllers
         // GET: Card
         public ActionResult CardAction()
         {
-            DataTable dtblProduct = new DataTable();
+            DataTable dtblCard = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
+                SqlCommand cmd = new SqlCommand("spCard", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType","Select");
+                cmd.Parameters.AddWithValue("@prodID",1);
                 sqlConn.Open();
-                SqlDataAdapter sqlData = new SqlDataAdapter("Select * from card where ProductID=1", sqlConn);
-                sqlData.Fill(dtblProduct);
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblCard.Load(sqlread);
+                sqlConn.Close();
             }
-
-            return PartialView("_CardView", dtblProduct);
+             return PartialView("_CardView", dtblCard);
         }
+           
+      
 
         // GET: Card/Details/5
         public ActionResult Details(int id)
@@ -40,62 +47,132 @@ namespace TanmiahDatabase.Controllers
 
         // POST: Card/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(cardModel card)
         {
-            try
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                SqlCommand sqlCmd = new SqlCommand("spCard", sqlCon);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                //sqlCmd.Parameters.AddWithValue("@prodID", card.ProductID);
+                //sqlCmd.Parameters.AddWithValue("@cardImg", card.CardImage);
+                //sqlCmd.Parameters.AddWithValue("@cardTitle", card.ShortDescription);
+                //sqlCmd.Parameters.AddWithValue("@cardText", card.ShortText);
+                //sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
+                sqlCmd.Parameters.AddWithValue("@cardImg", card.CardImage);
+                sqlCmd.Parameters.AddWithValue("@cardTitle", card.ShortDescription);
+                sqlCmd.Parameters.AddWithValue("@cardText", card.ShortText);
+                sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
+                sqlCon.Open();
+                SqlDataReader sqlread = sqlCmd.ExecuteReader();
+                sqlCon.Close();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Card/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            cardModel card = new cardModel();
+            DataTable dtblCard = new DataTable();
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                
+                SqlCommand cmd = new SqlCommand("spCard", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType","select");
+                cmd.Parameters.AddWithValue("@prodID",id);
+                sqlConn.Open();
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblCard.Load(sqlread);
+                sqlConn.Close();
+            }
+            if (dtblCard.Rows.Count == 1)
+            {
+                card.ProductID = Convert.ToInt32(dtblCard.Rows[0][0].ToString());
+                card.CardImage = dtblCard.Rows[0][1].ToString();
+                card.ShortDescription = dtblCard.Rows[0][2].ToString();
+                card.ShortText = dtblCard.Rows[0][3].ToString();
+                return View(card);
+            }
+            else
+                return RedirectToAction("Index");
         }
 
         // POST: Card/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(cardModel card)
         {
-            try
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                SqlCommand sqlCmd = new SqlCommand("spCard", sqlCon);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@prodID", card.ProductID);//miss
+                sqlCmd.Parameters.AddWithValue("@cardImg", card.CardImage);
+                sqlCmd.Parameters.AddWithValue("@cardTitle", card.ShortDescription);
+                sqlCmd.Parameters.AddWithValue("@cardText", card.ShortText);
+                sqlCmd.Parameters.AddWithValue("@StatementType", "Update");
+                sqlCon.Open();
+                SqlDataReader sqlread = sqlCmd.ExecuteReader();
+                sqlCon.Close();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Home");
+           
         }
 
         // GET: Card/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            cardModel card = new cardModel();
+            DataTable dtblCard = new DataTable();
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("spCard", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Select");
+                cmd.Parameters.AddWithValue("@prodID", id);
+                sqlConn.Open();
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblCard.Load(sqlread);
+                sqlConn.Close();
+            }
+            if (dtblCard.Rows.Count == 1)
+            {
+                card.ProductID = Convert.ToInt32(dtblCard.Rows[0][0].ToString());
+                card.CardImage = dtblCard.Rows[0][1].ToString();
+                card.ShortDescription =dtblCard.Rows[0][2].ToString();
+                card.ShortText = dtblCard.Rows[0][3].ToString();
+                return View(card);
+            }
+            else
+                return RedirectToAction("Index");
         }
 
         // POST: Card/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, cardModel card)
         {
-            try
+            DataTable dtblcard = new DataTable();
+            using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                SqlCommand cmd = new SqlCommand("spCard", sqlConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StatementType", "Delete");
+                cmd.Parameters.AddWithValue("@prodID", id);
+                sqlConn.Open();
+                SqlDataReader sqlread = cmd.ExecuteReader();
+                dtblcard.Load(sqlread);
+                sqlConn.Close();
             }
-            catch
+            if (dtblcard.Rows.Count == 1)
             {
-                return View();
+                card.ProductID = Convert.ToInt32(dtblcard.Rows[0][0].ToString());
+                card.CardImage = dtblcard.Rows[0][1].ToString();
+                card.ShortDescription = dtblcard.Rows[0][2].ToString();
+                card.ShortText = dtblcard.Rows[0][3].ToString();
+                return View(card);
             }
+            else
+                return RedirectToAction("Index", "Home");
         }
     }
 }
