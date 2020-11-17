@@ -23,7 +23,6 @@ namespace TanmiahDatabase.Controllers
                 SqlCommand cmd = new SqlCommand("spListing", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType", "Select");
-                //cmd.Parameters.AddWithValue("@listid", 2);
                 sqlConn.Open();
                 SqlDataReader sqlread = cmd.ExecuteReader();
                 dtblList.Load(sqlread);
@@ -55,7 +54,7 @@ namespace TanmiahDatabase.Controllers
                 sqlCmd.Parameters.AddWithValue("@listImg", ListModel.ListingImg);
                 sqlCmd.Parameters.AddWithValue("@listCat", ListModel.ListingProd);
                 sqlCmd.Parameters.AddWithValue("@listTitle", ListModel.ListingProdTitle);
-                sqlCmd.Parameters.AddWithValue("@listText", ListModel.ListingProdDet);
+                sqlCmd.Parameters.AddWithValue("@listText", ListModel.ListingDetail);
                 sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
                 sqlCon.Open();
                 SqlDataReader sqlread = sqlCmd.ExecuteReader();
@@ -86,7 +85,7 @@ namespace TanmiahDatabase.Controllers
                     ListModel.ListingImg = dtbllist.Rows[0][1].ToString();
                     ListModel.ListingProd = dtbllist.Rows[0][2].ToString();
                     ListModel.ListingProdTitle = dtbllist.Rows[0][3].ToString();
-                    ListModel.ListingProdDet = dtbllist.Rows[0][4].ToString();
+                    ListModel.ListingDetail = dtbllist.Rows[0][4].ToString();
                     return View(ListModel);
             }
             else
@@ -105,7 +104,7 @@ namespace TanmiahDatabase.Controllers
                 sqlCmd.Parameters.AddWithValue("@listImg", ListModel.ListingImg);
                 sqlCmd.Parameters.AddWithValue("@listCat", ListModel.ListingProd);
                 sqlCmd.Parameters.AddWithValue("@listTitle", ListModel.ListingProdTitle);
-                sqlCmd.Parameters.AddWithValue("@listText", ListModel.ListingProdDet);
+                sqlCmd.Parameters.AddWithValue("@listText", ListModel.ListingDetail);
                 sqlCmd.Parameters.AddWithValue("@StatementType", "Update");
                 sqlCon.Open();
                 SqlDataReader sqlread = sqlCmd.ExecuteReader();
@@ -121,8 +120,6 @@ namespace TanmiahDatabase.Controllers
             DataTable dtbllist = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                //sqlConn.Open();
-                //string query = "Select * from Banner where ProductID=@ProductID";
                 SqlCommand cmd = new SqlCommand("spListing", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType", "SelectEdit");
@@ -138,7 +135,7 @@ namespace TanmiahDatabase.Controllers
                 listModel.ListingImg = dtbllist.Rows[0][1].ToString();
                 listModel.ListingProd = dtbllist.Rows[0][2].ToString();
                 listModel.ListingProdTitle = dtbllist.Rows[0][3].ToString();
-                listModel.ListingProdDet = dtbllist.Rows[0][4].ToString();
+                listModel.ListingDetail = dtbllist.Rows[0][4].ToString();
                 return View(listModel);
             }
             else
@@ -152,8 +149,6 @@ namespace TanmiahDatabase.Controllers
             DataTable dtbllist = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                //sqlConn.Open();
-                //string query = "Select * from Banner where ProductID=@ProductID";
                 SqlCommand cmd = new SqlCommand("spListing", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType", "Delete");
@@ -169,7 +164,7 @@ namespace TanmiahDatabase.Controllers
                 listModel.ListingImg = dtbllist.Rows[0][1].ToString();
                 listModel.ListingProd = dtbllist.Rows[0][2].ToString();
                 listModel.ListingProdTitle = dtbllist.Rows[0][3].ToString();
-                listModel.ListingProdDet = dtbllist.Rows[0][4].ToString();
+                listModel.ListingDetail = dtbllist.Rows[0][4].ToString();
                 return View(listModel);
             }
             else

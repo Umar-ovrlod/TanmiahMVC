@@ -122,8 +122,6 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblBanner = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                //sqlConn.Open();
-                //string query = "Select * from Banner where ProductID=@ProductID";
                 SqlCommand cmd = new SqlCommand("spBanner", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType", "Select");

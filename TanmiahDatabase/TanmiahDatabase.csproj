@@ -375,7 +375,6 @@
     <Compile Include="Models\DescriptionModel.cs" />
     <Compile Include="Models\ListingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BannerServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

@@ -53,11 +53,6 @@ namespace TanmiahDatabase.Controllers
             {
                 SqlCommand sqlCmd = new SqlCommand("spCard", sqlCon);
                 sqlCmd.CommandType = CommandType.StoredProcedure;
-                //sqlCmd.Parameters.AddWithValue("@prodID", card.ProductID);
-                //sqlCmd.Parameters.AddWithValue("@cardImg", card.CardImage);
-                //sqlCmd.Parameters.AddWithValue("@cardTitle", card.ShortDescription);
-                //sqlCmd.Parameters.AddWithValue("@cardText", card.ShortText);
-                //sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
                 sqlCmd.Parameters.AddWithValue("@cardImg", card.CardImage);
                 sqlCmd.Parameters.AddWithValue("@cardTitle", card.ShortDescription);
                 sqlCmd.Parameters.AddWithValue("@cardText", card.ShortText);
@@ -76,7 +71,6 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblCard = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                
                 SqlCommand cmd = new SqlCommand("spCard", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType","select");
@@ -106,7 +100,7 @@ namespace TanmiahDatabase.Controllers
             {
                 SqlCommand sqlCmd = new SqlCommand("spCard", sqlCon);
                 sqlCmd.CommandType = CommandType.StoredProcedure;
-                sqlCmd.Parameters.AddWithValue("@prodID", card.ProductID);//miss
+                sqlCmd.Parameters.AddWithValue("@prodID", card.ProductID);
                 sqlCmd.Parameters.AddWithValue("@cardImg", card.CardImage);
                 sqlCmd.Parameters.AddWithValue("@cardTitle", card.ShortDescription);
                 sqlCmd.Parameters.AddWithValue("@cardText", card.ShortText);
@@ -116,7 +110,6 @@ namespace TanmiahDatabase.Controllers
                 sqlCon.Close();
             }
             return RedirectToAction("Index", "Home");
-           
         }
 
         // GET: Card/Delete/5

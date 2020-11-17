@@ -11,6 +11,6 @@ namespace TanmiahDatabase.Models
         public string ListingImg { get; set; }
         public string ListingProd { get; set; }
         public string ListingProdTitle { get; set; }
-        public string ListingProdDet { get; set; }
+        public string ListingDetail { get; set; }
     }
 }

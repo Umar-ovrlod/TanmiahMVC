@@ -60,7 +60,7 @@ namespace TanmiahDatabase.Controllers
                 sqlCmd.Parameters.AddWithValue("@carbohydrates", descModel.Carbo);
                 sqlCmd.Parameters.AddWithValue("@protiens", descModel.Protiens);
                 sqlCmd.Parameters.AddWithValue("@Fat", descModel.Fat);
-                sqlCmd.Parameters.AddWithValue("@ProtienPP", descModel.ProtiensPack);
+                sqlCmd.Parameters.AddWithValue("@ProtienPP", descModel.ProtiensPerPack);
                 sqlCmd.Parameters.AddWithValue("@FatPP", descModel.FatPerPack);
                 sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
                 sqlCon.Open();
@@ -78,8 +78,6 @@ namespace TanmiahDatabase.Controllers
         DataTable dtblDesc = new DataTable();
         using (SqlConnection sqlConn = new SqlConnection(connectionString))
         {
-            //sqlConn.Open();
-            //string query = "Select * from Banner where ProductID=@ProductID";
             SqlCommand cmd = new SqlCommand("spDescription", sqlConn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@StatementType", "Select");
@@ -100,7 +98,7 @@ namespace TanmiahDatabase.Controllers
             descModel.Carbo = dtblDesc.Rows[0][6].ToString();
             descModel.Protiens = dtblDesc.Rows[0][7].ToString();
             descModel.Fat = dtblDesc.Rows[0][8].ToString();
-            descModel.ProtiensPack = dtblDesc.Rows[0][9].ToString();
+            descModel.ProtiensPerPack = dtblDesc.Rows[0][9].ToString();
             descModel.FatPerPack = dtblDesc.Rows[0][10].ToString();
             return View(descModel);
         }
@@ -126,7 +124,7 @@ namespace TanmiahDatabase.Controllers
                 sqlCmd.Parameters.AddWithValue("@carbohydrates", descModel.Carbo);
                 sqlCmd.Parameters.AddWithValue("@protiens", descModel.Protiens);
                 sqlCmd.Parameters.AddWithValue("@Fat", descModel.Fat);
-                sqlCmd.Parameters.AddWithValue("@ProtienPP", descModel.ProtiensPack);
+                sqlCmd.Parameters.AddWithValue("@ProtienPP", descModel.ProtiensPerPack);
                 sqlCmd.Parameters.AddWithValue("@FatPP", descModel.FatPerPack);
                 sqlCmd.Parameters.AddWithValue("@StatementType", "Update");
                 sqlCon.Open();
@@ -143,8 +141,6 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblDesc = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                //sqlConn.Open();
-                //string query = "Select * from Banner where ProductID=@ProductID";
                 SqlCommand cmd = new SqlCommand("spDescription", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType", "Select");
@@ -165,7 +161,7 @@ namespace TanmiahDatabase.Controllers
                 descModel.Carbo = dtblDesc.Rows[0][6].ToString();
                 descModel.Protiens = dtblDesc.Rows[0][7].ToString();
                 descModel.Fat = dtblDesc.Rows[0][8].ToString();
-                descModel.ProtiensPack = dtblDesc.Rows[0][9].ToString();
+                descModel.ProtiensPerPack = dtblDesc.Rows[0][9].ToString();
                 descModel.FatPerPack = dtblDesc.Rows[0][10].ToString();
                 return View(descModel);
             }
@@ -180,8 +176,6 @@ namespace TanmiahDatabase.Controllers
             DataTable dtblDesc = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                //sqlConn.Open();
-                //string query = "Select * from Banner where ProductID=@ProductID";
                 SqlCommand cmd = new SqlCommand("spDescription", sqlConn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@StatementType", "delete");
@@ -202,7 +196,7 @@ namespace TanmiahDatabase.Controllers
                 descModel.Carbo = dtblDesc.Rows[0][6].ToString();
                 descModel.Protiens = dtblDesc.Rows[0][7].ToString();
                 descModel.Fat = dtblDesc.Rows[0][8].ToString();
-                descModel.ProtiensPack = dtblDesc.Rows[0][9].ToString();
+                descModel.ProtiensPerPack = dtblDesc.Rows[0][9].ToString();
                 descModel.FatPerPack = dtblDesc.Rows[0][10].ToString();
                 return View(descModel);
             }

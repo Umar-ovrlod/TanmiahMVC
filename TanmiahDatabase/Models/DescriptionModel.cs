@@ -16,7 +16,7 @@ namespace TanmiahDatabase.Models
         public string Carbo { get; set; }
         public string Protiens { get; set; }
         public string Fat { get; set; }
-        public string ProtiensPack { get; set;}
+        public string ProtiensPerPack { get; set;}
         public string FatPerPack { get; set; }
     }
 }
