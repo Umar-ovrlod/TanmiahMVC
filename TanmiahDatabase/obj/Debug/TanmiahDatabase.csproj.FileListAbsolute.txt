@@ -148,3 +148,6 @@ C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahD
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CopyComplete
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.pdb
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csprojAssemblyReference.cache
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Connect.dll
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Connect.pdb

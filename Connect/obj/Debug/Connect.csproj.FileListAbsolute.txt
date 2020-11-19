@@ -1,0 +1,6 @@
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\obj\Debug\Connect.csprojAssemblyReference.cache
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\obj\Debug\Connect.csproj.CoreCompileInputs.cache
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Connect.dll
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Connect.pdb
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\obj\Debug\Connect.dll
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\obj\Debug\Connect.pdb

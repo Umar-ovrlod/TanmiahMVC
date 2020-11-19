@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanmiahDatabase", "TanmiahDatabase\TanmiahDatabase.csproj", "{78739E43-51B3-47C6-9326-EA23651C6248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect", "Connect\Connect.csproj", "{6E03339D-9495-4D78-AE78-68B522252D27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{78739E43-51B3-47C6-9326-EA23651C6248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78739E43-51B3-47C6-9326-EA23651C6248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78739E43-51B3-47C6-9326-EA23651C6248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E03339D-9495-4D78-AE78-68B522252D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E03339D-9495-4D78-AE78-68B522252D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E03339D-9495-4D78-AE78-68B522252D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E03339D-9495-4D78-AE78-68B522252D27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
