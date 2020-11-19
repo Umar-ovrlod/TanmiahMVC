@@ -376,6 +376,7 @@
     <Compile Include="Models\ListingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BannerService.cs" />
+    <Compile Include="Services\BreadcrumbServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -393,7 +394,6 @@
     <Content Include="Views\PartialView\_DescriptionView.cshtml" />
     <Content Include="Views\PartialView\_ListingView.cshtml" />
     <Content Include="Views\Banner\Create.cshtml" />
-    <Content Include="Views\BreadCrumb\Edit.cshtml" />
     <Content Include="Views\Card\Delete.cshtml" />
     <Content Include="Views\Card\Edit.cshtml" />
     <Content Include="Views\Banner\Edit.cshtml" />
@@ -405,6 +405,7 @@
     <Content Include="Views\Listing\Create.cshtml" />
     <Content Include="Views\Listing\Delete.cshtml" />
     <Content Include="Views\Banner\Delete.cshtml" />
+    <Content Include="Views\BreadCrumb\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

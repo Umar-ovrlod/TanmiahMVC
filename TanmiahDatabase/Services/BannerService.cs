@@ -54,7 +54,7 @@ namespace TanmiahDatabase.Services
 
     public class ReadBanner
     {
-        public BannerModel ReadData(int id)
+         public BannerModel ReadData(int id)
         {
             BannerModel bannerModel = new BannerModel();
             DataTable dtblBanner = new DataTable();
