@@ -14,22 +14,10 @@ namespace TanmiahDatabase.Controllers
 {
     public class BreadCrumbController : Controller
     {
-        //string connectionString = ConfigurationManager.ConnectionStrings["FoodDbContext"].ConnectionString;
+        
         // GET: BreadCrumb
         public ActionResult BreadCrumbAction()
         {
-            //DataTable dtblProduct = new DataTable();
-            //using (SqlConnection sqlConn = new SqlConnection(Sql.ConnectionString))
-            //{
-            //    SqlCommand cmd = new SqlCommand("spBreadcrumb", sqlConn);
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    cmd.Parameters.AddWithValue("@StatementType", "Select");
-            //    cmd.Parameters.AddWithValue("@prodID", 1);
-            //    sqlConn.Open();
-            //    SqlDataReader sqlread = cmd.ExecuteReader();
-            //    dtblProduct.Load(sqlread);
-            //    sqlConn.Close();
-            //}
             BreadcrumbServices crumbService = new BreadcrumbServices();
             DataTable dtblProduct = new DataTable();
             int id = 1;
@@ -64,52 +52,19 @@ namespace TanmiahDatabase.Controllers
                 return View();
             }
         }
-
+        [HttpGet]
         // GET: BreadCrumb/Edit/5
         public ActionResult Edit(int id)
         {
-           
-            DataTable dtblBread = new DataTable();
-            //using (SqlConnection sqlConn = new SqlConnection(Sql.ConnectionString))
-            //{
-            //    //sqlConn.Open();
-            //    //string query = "Select * from Banner where ProductID=@ProductID";
-            //    SqlCommand cmd = new SqlCommand("spBreadcrumb", sqlConn);
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    cmd.Parameters.AddWithValue("@StatementType", "Select");
-            //    cmd.Parameters.AddWithValue("@prodID", id);
-            //    sqlConn.Open();
-            //    SqlDataReader sqlread = cmd.ExecuteReader();
-            //    dtblBread.Load(sqlread);
-            //    sqlConn.Close();
-            //}
-            //if (dtblBread.Rows.Count == 1)
-            //{
-            //    breadcrumb.ProductID = Convert.ToInt32(dtblBread.Rows[0][0].ToString());
-            //    breadcrumb.ProductTitle = dtblBread.Rows[0][2].ToString();
-            //    return View(breadcrumb);
-            //}
             ReadCrumb crumb = new ReadCrumb();
             BreadcrumbModel breadcrumb = crumb.Read(id);
             return View(breadcrumb);
-            //else
-            //    return RedirectToAction("Index");
         }
 
         // POST: BreadCrumb/Edit/5
         [HttpPost]
         public ActionResult Edit(BreadcrumbModel breadcrumb)
         {
-            //using (SqlConnection sqlCon = new SqlConnection(Sql.ConnectionString))
-            //{
-            //    SqlCommand sqlCmd = new SqlCommand("spBanner", sqlCon);
-            //    sqlCmd.CommandType = CommandType.StoredProcedure;
-            //    sqlCmd.Parameters.AddWithValue("@prodID", breadcrumb.ProductID);
-            //    sqlCmd.Parameters.AddWithValue("@prodTitle", breadcrumb.ProductTitle);
-            //    sqlCon.Open();
-            //    SqlDataReader sqlread = sqlCmd.ExecuteReader();
-            //    sqlCon.Close();
-            //}
             EditCrumb edit = new EditCrumb();
             SqlDataReader sqlCmd = edit.EditBread(breadcrumb);
             return RedirectToAction("Index", "Home");

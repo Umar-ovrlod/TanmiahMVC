@@ -7,9 +7,12 @@ namespace TanmiahDatabase.Models
 {
     public class cardModel
     {
-        public int ProductID { get; set; }
+        public int CardId { get; set; }
         public string CardImage { get; set; }
         public string ShortDescription { get; set; }
         public string ShortText { get; set; }
+        public int ProductID { get; set; }
+
+
     }
 }

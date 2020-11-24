@@ -70,7 +70,6 @@ namespace TanmiahDatabase.Controllers
         [HttpGet]
         // GET: Banner/Delete/5
         public ActionResult Delete(int id) {
-            //EditBanner edit = new EditBanner();
             ReadBanner read = new ReadBanner();
             BannerModel bannerModel = new BannerModel();
             bannerModel = read.ReadData(id);
