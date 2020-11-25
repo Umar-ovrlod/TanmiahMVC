@@ -13,14 +13,31 @@ namespace TanmiahDatabase.Controllers
 {
     public class BannerController : Controller
     {
-      
+        public IBannerService bannerInt;
+        public ICreateBanner CreateBannerInt;
+        public IReadBanner readBannerInt;
+        public IEditBanner EditBannerInt;
+        public IDeleteBanner deleteBannerInt;
+        public BannerModel bannerModelc;
+
+        public BannerController(IBannerService bannerService,ICreateBanner createBanner,IReadBanner readBanner,IEditBanner editBanner,IDeleteBanner deleteBanner,BannerModel modelBanner)
+        {
+            this.bannerInt = bannerService;
+            this.CreateBannerInt = createBanner;
+            this.readBannerInt = readBanner;
+            this.EditBannerInt = editBanner;
+            this.deleteBannerInt=deleteBanner;
+            this.bannerModelc = modelBanner;
+        }
+
+        
+
         // GET: Banner
         public ActionResult Index()
         {
-            BannerService banner = new BannerService();
             DataTable dtblProduct = new DataTable();
             int id = 1;
-            dtblProduct = banner.getDataTable(id);
+            dtblProduct = bannerInt.GetDataTable(id);
             return PartialView("_BannerView", dtblProduct);
         }
 
@@ -39,9 +56,8 @@ namespace TanmiahDatabase.Controllers
         // POST: Banner/Create
         [HttpPost]
         public ActionResult Create(BannerModel bannerModel)
-        { 
-            CreateBanner banner = new CreateBanner();
-            SqlDataReader sqlCmd = banner.createData(bannerModel);
+        {
+            SqlDataReader sqlcmd = CreateBannerInt.CreateData(bannerModel);
             return RedirectToAction("Index", "Home");
         }
 
@@ -51,9 +67,8 @@ namespace TanmiahDatabase.Controllers
         // GET: Banner/Edit/5
         public ActionResult Edit(int id)
         {
-            ReadBanner read = new ReadBanner();
-            BannerModel bannerModel = read.ReadData(id);
-            return View(bannerModel);
+            bannerModelc = readBannerInt.ReadData(id);
+            return View(bannerModelc);
         }
 
 
@@ -62,18 +77,15 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Edit(BannerModel bannerModel)
         {
-            EditBanner edit = new EditBanner();
-            SqlDataReader sqlCmd = edit.EditData(bannerModel, "Update");
+            SqlDataReader sqlCmd = EditBannerInt.EditData(bannerModel, "Update");
             return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         // GET: Banner/Delete/5
         public ActionResult Delete(int id) {
-            ReadBanner read = new ReadBanner();
-            BannerModel bannerModel = new BannerModel();
-            bannerModel = read.ReadData(id);
-            return View(bannerModel);
+            bannerModelc = readBannerInt.ReadData(id);
+            return View(bannerModelc);
         }
 
 
@@ -81,8 +93,7 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Delete(int id,BannerModel bannerModel)
         {
-            DeleteBanner dlt = new DeleteBanner();
-            SqlDataReader sqlCmd = dlt.DeleteData(id,bannerModel,"Delete");
+            SqlDataReader sqlCmd = deleteBannerInt.DeleteData(id, bannerModel, "Delete");
             return RedirectToAction("Index", "Home");
         }
     }

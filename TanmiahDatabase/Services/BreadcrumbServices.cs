@@ -10,7 +10,7 @@ using TanmiahDatabase.Models;
 
 namespace TanmiahDatabase.Services
 {
-    public class BreadcrumbServices
+    public class BreadcrumbServices : IBreadcrumbServices
     {
         public DataTable GetBreadcrumb(int id)
         {
@@ -30,7 +30,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class ReadCrumb
+    public class ReadCrumb : IReadCrumb
     {
         public BreadcrumbModel Read(int id)
         {
@@ -56,7 +56,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class EditCrumb
+    public class EditCrumb : IEditCrumb
     {
         public SqlDataReader EditBread(BreadcrumbModel breadcrumb)
         {

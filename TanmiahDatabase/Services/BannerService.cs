@@ -11,10 +11,10 @@ using Connect;
 namespace TanmiahDatabase.Services
 {
 
-    public class BannerService
+    public class BannerService : IBannerService
     {
         //function for fetching index data 
-        public DataTable getDataTable(int id)
+        public DataTable GetDataTable(int id)
         {
             using (SqlConnection sqlConn = new SqlConnection(Sql.ConnectionString))
             {
@@ -31,9 +31,9 @@ namespace TanmiahDatabase.Services
             }
         }
     }
-    public class CreateBanner
+    public class CreateBanner : ICreateBanner
     {
-        public SqlDataReader createData(BannerModel bannerModel)
+        public SqlDataReader CreateData(BannerModel bannerModel)
         {
             using (SqlConnection sqlCon = new SqlConnection(Sql.ConnectionString))
             {
@@ -52,7 +52,7 @@ namespace TanmiahDatabase.Services
         }
 }
 
-    public class ReadBanner
+    public class ReadBanner : IReadBanner
     {
          public BannerModel ReadData(int id)
         {
@@ -81,7 +81,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class EditBanner
+    public class EditBanner : IEditBanner
     {
         public SqlDataReader EditData(BannerModel bannerModel, string statement)
         {
@@ -104,7 +104,7 @@ namespace TanmiahDatabase.Services
     }
 
 
-    public class DeleteBanner
+    public class DeleteBanner : IDeleteBanner
     {
         public SqlDataReader DeleteData(int id, BannerModel bannerModel, string statement)
         {

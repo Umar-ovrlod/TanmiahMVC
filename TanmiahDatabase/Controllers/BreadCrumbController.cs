@@ -14,14 +14,25 @@ namespace TanmiahDatabase.Controllers
 {
     public class BreadCrumbController : Controller
     {
-        
+        public IBreadcrumbServices breadcrumbServicesInt;
+        public IReadCrumb readCrumbInt;
+        public IEditCrumb editCrumbInt;
+        public BreadcrumbModel crumbModelc;
+
+        public BreadCrumbController(IBreadcrumbServices breadcrumbServices,IReadCrumb readCrumb,IEditCrumb editCrumb,BreadcrumbModel breadcrumb)
+        {
+            this.breadcrumbServicesInt = breadcrumbServices;
+            this.readCrumbInt = readCrumb;
+            this.editCrumbInt = editCrumb;
+            this.crumbModelc = breadcrumb;
+        }
+
         // GET: BreadCrumb
         public ActionResult BreadCrumbAction()
         {
-            BreadcrumbServices crumbService = new BreadcrumbServices();
             DataTable dtblProduct = new DataTable();
             int id = 1;
-            dtblProduct = crumbService.GetBreadcrumb(id);
+            dtblProduct = breadcrumbServicesInt.GetBreadcrumb(id);
             return PartialView("_BreadcrumbView", dtblProduct);
         }
 
@@ -56,17 +67,15 @@ namespace TanmiahDatabase.Controllers
         // GET: BreadCrumb/Edit/5
         public ActionResult Edit(int id)
         {
-            ReadCrumb crumb = new ReadCrumb();
-            BreadcrumbModel breadcrumb = crumb.Read(id);
-            return View(breadcrumb);
+            crumbModelc = readCrumbInt.Read(id);
+            return View(crumbModelc);
         }
 
         // POST: BreadCrumb/Edit/5
         [HttpPost]
         public ActionResult Edit(BreadcrumbModel breadcrumb)
         {
-            EditCrumb edit = new EditCrumb();
-            SqlDataReader sqlCmd = edit.EditBread(breadcrumb);
+            SqlDataReader sqlCmd = editCrumbInt.EditBread(breadcrumb);
             return RedirectToAction("Index", "Home");
         }
 

@@ -12,7 +12,7 @@ using Connect;
 namespace TanmiahDatabase.Services
 {
 
-    public class ListingServices
+    public class ListingServices : IListingServices
     {
         public DataTable GetListing()
         {
@@ -31,7 +31,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class CreateList
+    public class CreateList : ICreateList
     {
         public SqlDataReader CreateProdList(ListingModel ListModel)
         {
@@ -51,7 +51,7 @@ namespace TanmiahDatabase.Services
             }
         }
     }
-    public class ReadList
+    public class ReadList : IReadList
     {
         public ListingModel ReadListData(int id)
         {
@@ -81,7 +81,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class EditList
+    public class EditList : IEditList
     {
         public SqlDataReader EditListData(ListingModel ListModel)
         {
@@ -103,7 +103,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class DeleteList
+    public class DeleteList : IDeleteList
     {
         public SqlDataReader DeleteListData(int id, ListingModel listModel)
         {
@@ -122,6 +122,4 @@ namespace TanmiahDatabase.Services
             } 
         }
     }
-
-
 }

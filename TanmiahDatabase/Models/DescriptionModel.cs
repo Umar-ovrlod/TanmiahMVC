@@ -7,7 +7,7 @@ namespace TanmiahDatabase.Models
 {
     public class DescriptionModel
     {
-        public int ProductID { get; set; }
+        public int DescID { get; set; }
         public string DescTitle { get; set; }
         public string DescText { get; set; }
         public string DescDec { get; set; }
@@ -18,5 +18,6 @@ namespace TanmiahDatabase.Models
         public string Fat { get; set; }
         public string ProtiensPerPack { get; set;}
         public string FatPerPack { get; set; }
+        public int ProductID { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace TanmiahDatabase
     {
         protected void Application_Start()
         {
+            UnityConfig.RegisterComponents();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             RouteConfig.RegisterViewEngins(ViewEngines.Engines);

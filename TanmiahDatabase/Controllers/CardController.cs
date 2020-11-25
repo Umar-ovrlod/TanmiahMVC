@@ -13,13 +13,29 @@ namespace TanmiahDatabase.Controllers
 {
     public class CardController : Controller
     {
+        public ICardServices CardService;
+        public ICreateCard CardCreate;
+        public IReadCard readCard;
+        public IEditCard cardEdit;
+        public IDeleteCard cardDelete;
+        public cardModel ModelCardc;
+        public CardController(ICardServices servicesCard, ICreateCard createCard, IReadCard cardRead, IEditCard editCard, IDeleteCard deleteCard, cardModel cardModel)
+        {
+            this.CardService = servicesCard;
+            this.CardCreate = createCard;
+            this.readCard = cardRead;
+            this.cardEdit = editCard;
+            this.cardDelete = deleteCard;
+            this.ModelCardc = cardModel;
+        }
+
+
         // GET: Card
         public ActionResult CardAction()
         {
             DataTable dtblCard = new DataTable();
-            CardServices card = new CardServices();
             int id = 1;
-            dtblCard = card.GetCard(id);
+            dtblCard = CardService.GetCard(id);
              return PartialView("_CardView", dtblCard);
         }
            
@@ -41,8 +57,7 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Create(cardModel card)
         {
-            CreateCard create = new CreateCard();
-            SqlDataReader sqlread = create.GenerateCard(card);
+            SqlDataReader sqlread = CardCreate.GenerateCard(card);
             return RedirectToAction("Index", "Home");
         }
 
@@ -50,17 +65,15 @@ namespace TanmiahDatabase.Controllers
         // GET: Card/Edit/5
         public ActionResult Edit(int id)
         {
-            ReadCard read = new ReadCard();
-            cardModel card = read.ReadCardData(id);
-            return View(card);
+            ModelCardc = readCard.ReadCardData(id);
+            return View(ModelCardc);
         }
 
         // POST: Card/Edit/5
         [HttpPost]
         public ActionResult Edit(cardModel card)
         {
-            EditCard edit = new EditCard();
-            SqlDataReader sqlread= edit.EditCardData(card);
+            SqlDataReader sqlread = cardEdit.EditCardData(card);
             return RedirectToAction("Index", "Home");
         }
            
@@ -69,18 +82,15 @@ namespace TanmiahDatabase.Controllers
         // GET: Card/Delete/5
         public ActionResult Delete(int id)
         {
-            ReadCard read = new ReadCard();
-            cardModel card = read.ReadCardData(id);
-            return View(card);
+            ModelCardc = readCard.ReadCardData(id);
+            return View(ModelCardc);
         }
 
         // POST: Card/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, cardModel card)
         {
-            //datatable dtblcard = new datatable();
-            DeleteCard dltCard = new DeleteCard();
-            SqlDataReader sqlRead = dltCard.DeleteCardData(card,id);
+            SqlDataReader sqlRead = cardDelete.DeleteCardData(card, id);
             return RedirectToAction("Index", "Home");
         }
     }

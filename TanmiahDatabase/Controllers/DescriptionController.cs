@@ -13,13 +13,29 @@ namespace TanmiahDatabase.Controllers
 {
     public class DescriptionController : Controller
     {
+        public IDescriptionServices ServicesDesc;
+        public ICreateDescription CreateDesc;
+        public IReadDescription ReadDesc;
+        public IEditDescription EditDesc;
+        public IDeleteDescription DeleteDesc;
+        public DescriptionModel DescModelc;
+
+        public DescriptionController(IDescriptionServices descriptionServices, ICreateDescription createDescription,IReadDescription readDescription,IEditDescription editDescription,IDeleteDescription deleteDescription,DescriptionModel ModelDesc)
+        {
+            this.ServicesDesc = descriptionServices;
+            this.CreateDesc = createDescription;
+            this.ReadDesc = readDescription;
+            this.EditDesc = editDescription;
+            this.DeleteDesc = deleteDescription;
+            this.DescModelc = ModelDesc;
+        }
+
         // GET: Description
         public ActionResult DescriptionAction()
         {
             DataTable dtblProduct = new DataTable();
-            DescriptionServices desc = new DescriptionServices();
             int id = 1;
-            dtblProduct = desc.GetDescription(id);
+            dtblProduct = ServicesDesc.GetDescription(id);
             return PartialView("_DescriptionView", dtblProduct);
         }
 
@@ -39,8 +55,7 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Create(DescriptionModel descModel)
         {
-            CreateDescription desc = new CreateDescription();
-            SqlDataReader sqlread = desc.CreateDesc(descModel);
+            SqlDataReader sqlread = CreateDesc.CreateDesc(descModel);
             return RedirectToAction("Index", "Home");
         }
 
@@ -48,10 +63,8 @@ namespace TanmiahDatabase.Controllers
         // GET: Description/Edit/5
         public ActionResult Edit(int id)
         {
-            DescriptionModel descModel = new DescriptionModel();
-            ReadDescription desc = new ReadDescription();
-            descModel = desc.ReadDescData(id);
-            return View(descModel);
+            DescModelc = ReadDesc.ReadDescData(id);
+            return View(DescModelc);
         }
 
 
@@ -59,27 +72,22 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Edit(DescriptionModel descModel)
         {
-            EditDescription edit = new EditDescription();
-            SqlDataReader sqlread = edit.EditDescData(descModel);
+            SqlDataReader sqlread = EditDesc.EditDescData(descModel);
             return RedirectToAction("Index", "Home");
         }
 
         // GET: Description/Delete/5
         public ActionResult Delete(int id)
         {
-            DescriptionModel descModel = new DescriptionModel();
-            ReadDescription desc = new ReadDescription();
-            descModel = desc.ReadDescData(id);
-            return View(descModel);
+            DescModelc = ReadDesc.ReadDescData(id);
+            return View(DescModelc);
         }
 
         // POST: Description/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, DescriptionModel descModel)//Continue
         {
-            DataTable dtblDesc = new DataTable();
-            DeleteDescription dlt = new DeleteDescription();
-            SqlDataReader sqlread = dlt.DeleteDescData(id, descModel);
+            SqlDataReader sqlread = DeleteDesc.DeleteDescData(id, descModel);
             return RedirectToAction("Index", "Home");
         }
     }

@@ -13,14 +13,28 @@ namespace TanmiahDatabase.Controllers
 {
     public class ListingController : Controller
     {
-        //string connectionString = ConfigurationManager.ConnectionStrings["FoodDbContext"].ConnectionString;
+        public IListingServices ListingServices;
+        public ICreateList CreateList;
+        public IReadList ReadList;
+        public IEditList EditList;
+        public IDeleteList DeleteList;
+        public ListingModel ListModelc;
+
+        public ListingController(IListingServices services,ICreateList listCreate,IReadList listRead, IEditList listEdit, IDeleteList listDelete,ListingModel modelList)
+        {
+            this.ListingServices = services;
+            this.CreateList = listCreate;
+            this.ReadList = listRead;
+            this.EditList = listEdit;
+            this.DeleteList = listDelete;
+            this.ListModelc = modelList;
+        }
+
         // GET: Listing
         public ActionResult ListAction()
         {
-            //int id = 1;
             DataTable dtblList = new DataTable();
-            ListingServices ProdList = new ListingServices();
-            dtblList = ProdList.GetListing();
+            dtblList = ListingServices.GetListing();
             return PartialView("_ListingView", dtblList);
         }
 
@@ -40,42 +54,37 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Create(ListingModel ListModel)
         {
-            CreateList addList = new CreateList();
-            SqlDataReader sqlRead = addList.CreateProdList(ListModel);
+            SqlDataReader sqlRead = CreateList.CreateProdList(ListModel);
             return RedirectToAction("Index", "Home");
         }
 
         // GET: Listing/Edit/5
         public ActionResult Edit(int id)
         {
-            ReadList read = new ReadList();
-            ListingModel ListModel = read.ReadListData(id);
-            return View(ListModel);
+            ListModelc = ReadList.ReadListData(id);
+            return View(ListModelc);
         }
 
         // POST: Listing/Edit/5
         [HttpPost]
         public ActionResult Edit(ListingModel ListModel)
         {
-            EditList editListItems = new EditList();
-            SqlDataReader sqlread = editListItems.EditListData(ListModel);
+            SqlDataReader sqlread = EditList.EditListData(ListModel);
             return RedirectToAction("Index", "Home");
         }
 
         // GET: Listing/Delete/5
         public ActionResult Delete(int id)
         {
-            ReadList read = new ReadList();
-            ListingModel ListModel = read.ReadListData(id);
-            return View(ListModel);
+            ListModelc = ReadList.ReadListData(id);
+            return View(ListModelc);
         }
 
         // POST: Listing/Delete/5
         [HttpPost]
         public ActionResult Delete(int id,ListingModel listModel)
         {
-            DeleteList dltList = new DeleteList();
-            SqlDataReader sqlread = dltList.DeleteListData(id, listModel);
+            SqlDataReader sqlread = DeleteList.DeleteListData(id, listModel);
             return RedirectToAction("Index","Home");
         }
     }

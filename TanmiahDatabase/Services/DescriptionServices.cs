@@ -11,7 +11,7 @@ using TanmiahDatabase.Models;
 
 namespace TanmiahDatabase.Services
 {
-    public class DescriptionServices
+    public class DescriptionServices : IDescriptionServices
     {
         public DataTable GetDescription(int id)
         {
@@ -32,7 +32,7 @@ namespace TanmiahDatabase.Services
     }
 
 
-    public class CreateDescription
+    public class CreateDescription : ICreateDescription
     {
         public SqlDataReader CreateDesc(DescriptionModel descModel)
         {
@@ -50,6 +50,7 @@ namespace TanmiahDatabase.Services
                 sqlCmd.Parameters.AddWithValue("@Fat", descModel.Fat);
                 sqlCmd.Parameters.AddWithValue("@ProtienPP", descModel.ProtiensPerPack);
                 sqlCmd.Parameters.AddWithValue("@FatPP", descModel.FatPerPack);
+                sqlCmd.Parameters.AddWithValue("@prodID", descModel.ProductID);
                 sqlCmd.Parameters.AddWithValue("@StatementType", "Insert");
                 sqlCon.Open();
                 SqlDataReader sqlread = sqlCmd.ExecuteReader();
@@ -60,7 +61,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class ReadDescription
+    public class ReadDescription : IReadDescription
     {
         public DescriptionModel ReadDescData(int id)
         {
@@ -79,7 +80,7 @@ namespace TanmiahDatabase.Services
             }
             if (dtblDesc.Rows.Count == 1)
             {
-                descModel.ProductID = Convert.ToInt32(dtblDesc.Rows[0][0].ToString());
+                descModel.DescID= Convert.ToInt32(dtblDesc.Rows[0][0].ToString());
                 descModel.DescTitle = dtblDesc.Rows[0][1].ToString();
                 descModel.DescText = dtblDesc.Rows[0][2].ToString();
                 descModel.DescDec = dtblDesc.Rows[0][3].ToString();
@@ -90,11 +91,12 @@ namespace TanmiahDatabase.Services
                 descModel.Fat = dtblDesc.Rows[0][8].ToString();
                 descModel.ProtiensPerPack = dtblDesc.Rows[0][9].ToString();
                 descModel.FatPerPack = dtblDesc.Rows[0][10].ToString();
+                descModel.ProductID = Convert.ToInt32(dtblDesc.Rows[0][11].ToString());
             }
             return descModel;
         }
     }
-    public class EditDescription
+    public class EditDescription : IEditDescription
     {
         public SqlDataReader EditDescData(DescriptionModel descModel)
         {
@@ -102,7 +104,7 @@ namespace TanmiahDatabase.Services
             {
                 SqlCommand sqlCmd = new SqlCommand("spDescription", sqlCon);
                 sqlCmd.CommandType = CommandType.StoredProcedure;
-                sqlCmd.Parameters.AddWithValue("@prodID", descModel.ProductID);
+                sqlCmd.Parameters.AddWithValue("@DescID", descModel.DescID);
                 sqlCmd.Parameters.AddWithValue("@DescTitle", descModel.DescTitle);
                 sqlCmd.Parameters.AddWithValue("@DescText", descModel.DescText);
                 sqlCmd.Parameters.AddWithValue("@DescDec", descModel.DescDec);
@@ -113,6 +115,7 @@ namespace TanmiahDatabase.Services
                 sqlCmd.Parameters.AddWithValue("@Fat", descModel.Fat);
                 sqlCmd.Parameters.AddWithValue("@ProtienPP", descModel.ProtiensPerPack);
                 sqlCmd.Parameters.AddWithValue("@FatPP", descModel.FatPerPack);
+                sqlCmd.Parameters.AddWithValue("@prodID", descModel.ProductID);
                 sqlCmd.Parameters.AddWithValue("@StatementType", "Update");
                 sqlCon.Open();
                 SqlDataReader sqlread = sqlCmd.ExecuteReader();
@@ -122,11 +125,11 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class DeleteDescription
+    public class DeleteDescription : IDeleteDescription
     {
         public SqlDataReader DeleteDescData(int id, DescriptionModel descModel)
         {
-            DataTable dtblDesc = new DataTable();
+            //DataTable dtblDesc = new DataTable();
             using (SqlConnection sqlConn = new SqlConnection(Sql.ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand("spDescription", sqlConn);
@@ -135,7 +138,7 @@ namespace TanmiahDatabase.Services
                 cmd.Parameters.AddWithValue("@prodID", id);
                 sqlConn.Open();
                 SqlDataReader sqlread = cmd.ExecuteReader();
-                dtblDesc.Load(sqlread);
+                //dtblDesc.Load(sqlread);
                 sqlConn.Close();
                 return sqlread;
             }

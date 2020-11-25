@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using TanmiahDatabase.Models;
 namespace TanmiahDatabase.Services
 {
-    public class CardServices
+    public class CardServices : ICardServices
     {
         public DataTable GetCard(int id)
         {
@@ -28,7 +28,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    public class CreateCard
+    public class CreateCard : ICreateCard
     {
         public SqlDataReader GenerateCard(cardModel card)
         {
@@ -49,7 +49,7 @@ namespace TanmiahDatabase.Services
         }
     }
 
-    class ReadCard
+    public class ReadCard : IReadCard
     {
         public cardModel ReadCardData(int id)
         {
@@ -79,7 +79,7 @@ namespace TanmiahDatabase.Services
     }
 
 
-    class EditCard
+    public class EditCard : IEditCard
     {
         public SqlDataReader EditCardData(cardModel card)
         {
@@ -100,7 +100,7 @@ namespace TanmiahDatabase.Services
             }
         }
     }
-    class DeleteCard
+    public class DeleteCard : IDeleteCard
     {
         public SqlDataReader DeleteCardData(cardModel card, int id)
         {
