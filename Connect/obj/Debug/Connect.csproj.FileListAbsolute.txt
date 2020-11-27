@@ -1,7 +1,9 @@
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Connect.dll.config
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Connect.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Connect.pdb
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\jQuery.Validation.Unobtrusive.Native.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Web.Helpers.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Web.Mvc.dll
@@ -12,6 +14,8 @@ C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Web.WebPa
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Unity.Abstractions.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Unity.Container.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Unity.Mvc5.dll
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Web.Helpers.xml
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\Connect\bin\Debug\System.Web.Mvc.xml

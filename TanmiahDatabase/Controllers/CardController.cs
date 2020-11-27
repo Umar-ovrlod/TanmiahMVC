@@ -57,27 +57,47 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Create(cardModel card)
         {
-            SqlDataReader sqlread = CardCreate.GenerateCard(card);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlread = CardCreate.GenerateCard(card);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(card);
+            }
         }
 
         [HttpGet]
         // GET: Card/Edit/5
         public ActionResult Edit(int id)
         {
-            ModelCardc = readCard.ReadCardData(id);
-            return View(ModelCardc);
+            if (ModelState.IsValid)
+            {
+                ModelCardc = readCard.ReadCardData(id);
+                return View(ModelCardc);
+            }
+            else
+            {
+                return View(ModelCardc);
+            }
         }
 
         // POST: Card/Edit/5
         [HttpPost]
         public ActionResult Edit(cardModel card)
         {
-            SqlDataReader sqlread = cardEdit.EditCardData(card);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlread = cardEdit.EditCardData(card);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(card);
+            }
         }
-           
-        
+
 
         // GET: Card/Delete/5
         public ActionResult Delete(int id)

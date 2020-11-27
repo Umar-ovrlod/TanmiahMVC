@@ -54,23 +54,44 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Create(ListingModel ListModel)
         {
-            SqlDataReader sqlRead = CreateList.CreateProdList(ListModel);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlRead = CreateList.CreateProdList(ListModel);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(ListModel);
+            }
         }
 
         // GET: Listing/Edit/5
         public ActionResult Edit(int id)
         {
-            ListModelc = ReadList.ReadListData(id);
-            return View(ListModelc);
+            if (ModelState.IsValid)
+            {
+                ListModelc = ReadList.ReadListData(id);
+                return View(ListModelc);
+            }
+            else
+            {
+                return View(ListModelc);
+            }
         }
 
         // POST: Listing/Edit/5
         [HttpPost]
         public ActionResult Edit(ListingModel ListModel)
         {
-            SqlDataReader sqlread = EditList.EditListData(ListModel);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlread = EditList.EditListData(ListModel);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(ListModel);
+            }
         }
 
         // GET: Listing/Delete/5

@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.SqlTypes;
 using Connect;
+using System.IO;
+
 namespace TanmiahDatabase.Services
 {
 

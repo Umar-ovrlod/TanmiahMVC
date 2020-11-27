@@ -55,16 +55,30 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Create(DescriptionModel descModel)
         {
-            SqlDataReader sqlread = CreateDesc.CreateDesc(descModel);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlread = CreateDesc.CreateDesc(descModel);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(descModel);
+            }
         }
 
 
         // GET: Description/Edit/5
         public ActionResult Edit(int id)
         {
-            DescModelc = ReadDesc.ReadDescData(id);
-            return View(DescModelc);
+            if (ModelState.IsValid)
+            {
+                DescModelc = ReadDesc.ReadDescData(id);
+                return View(DescModelc);
+            }
+            else
+            {
+                return View(DescModelc);
+            }
         }
 
 
@@ -72,8 +86,15 @@ namespace TanmiahDatabase.Controllers
         [HttpPost]
         public ActionResult Edit(DescriptionModel descModel)
         {
-            SqlDataReader sqlread = EditDesc.EditDescData(descModel);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlread = EditDesc.EditDescData(descModel);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(descModel);
+            }
         }
 
         // GET: Description/Delete/5

@@ -67,16 +67,31 @@ namespace TanmiahDatabase.Controllers
         // GET: BreadCrumb/Edit/5
         public ActionResult Edit(int id)
         {
-            crumbModelc = readCrumbInt.Read(id);
-            return View(crumbModelc);
+            if (ModelState.IsValid)
+            {
+                crumbModelc = readCrumbInt.Read(id);
+                return View(crumbModelc);
+            }
+            else
+            {
+                return View(crumbModelc);
+            }
         }
 
         // POST: BreadCrumb/Edit/5
         [HttpPost]
         public ActionResult Edit(BreadcrumbModel breadcrumb)
         {
-            SqlDataReader sqlCmd = editCrumbInt.EditBread(breadcrumb);
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlCmd = editCrumbInt.EditBread(breadcrumb);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         // GET: BreadCrumb/Delete/5

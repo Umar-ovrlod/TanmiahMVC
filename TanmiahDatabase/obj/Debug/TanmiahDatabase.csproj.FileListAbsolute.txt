@@ -73,8 +73,6 @@ C:\Users\Mudassir\source\repos\TanmiahDatabase\TanmiahDatabase\obj\Debug\Tanmiah
 C:\Users\Mudassir\source\repos\TanmiahDatabase\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CopyComplete
 C:\Users\Mudassir\source\repos\TanmiahDatabase\TanmiahDatabase\obj\Debug\TanmiahDatabase.dll
 C:\Users\Mudassir\source\repos\TanmiahDatabase\TanmiahDatabase\obj\Debug\TanmiahDatabase.pdb
-C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csprojAssemblyReference.cache
-C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CoreCompileInputs.cache
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\TanmiahDatabase.dll.config
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\TanmiahDatabase.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\TanmiahDatabase.pdb
@@ -126,6 +124,7 @@ C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\roslyn\VBCSCom
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Antlr3.Runtime.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Connect.dll
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\jQuery.Validation.Unobtrusive.Native.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Newtonsoft.Json.dll
@@ -156,6 +155,8 @@ C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\System.Web.Web
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Unity.Abstractions.pdb
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Unity.Container.pdb
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csprojAssemblyReference.cache
+C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CoreCompileInputs.cache
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.csproj.CopyComplete
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.dll
 C:\Users\Mudassir\Documents\GitHub\TanmiahMVC\TanmiahDatabase\obj\Debug\TanmiahDatabase.pdb

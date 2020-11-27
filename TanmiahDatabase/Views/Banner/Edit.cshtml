@@ -1,4 +1,5 @@
 ﻿@model TanmiahDatabase.Models.BannerModel
+@using System.Web.Optimization
 
 @{
     ViewBag.Title = "Edit";
@@ -9,57 +10,66 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal container center">
-    <h2>Edit</h2>
-    <h4>BannerModel</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductID, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<h2>Edit</h2>
+<h4>BannerModel</h4>
+<hr />
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+@Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="col-md-10">
+    @Html.EditorFor(model => model.ProductID, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
-        </div>
-    </div>
+</div>
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductTitle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductTitle, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<div class="form-group">
+@Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="col-md-10">
+    @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
+    @ViewBag.ProdType
+</div>
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<div class="form-group">
+@Html.LabelFor(model => model.ProductTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="col-md-10">
+    @Html.EditorFor(model => model.ProductTitle, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ProductTitle, "", new { @class = "text-danger" })
+    @ViewBag.ProdTitle
+</div>
+</div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<div class="form-group">
+@Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+<div class="col-md-10">
+    @Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
+    @ViewBag.ProdDesc
+</div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
+</div>
+
+<div class="form-group">
+    @*<img src="@Url.Content(Convert.ToString("~/BannerImages/"+Model.ProductImage))" style="width:250px; height:280px" />*@
+    @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control"} })
+       @*@Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control", @type = "file" } })*@
+
+        @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
+        @ViewBag.ProdImage
     </div>
-    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div class="form-group">
+<div class="col-md-offset-2 col-md-10">
+    <input type = "submit" value="Save" class="btn btn-default" />
+</div>
+</div>
+@Html.ActionLink("Back to List", "Index")
 </div>
 }
