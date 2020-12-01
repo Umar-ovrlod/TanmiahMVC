@@ -16,7 +16,6 @@
         },
         rules: {
             'CardImage': {
-                required: true,
                 minlength: 20
             },
 

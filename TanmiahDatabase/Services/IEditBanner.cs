@@ -5,6 +5,6 @@ namespace TanmiahDatabase.Services
 {
     public interface IEditBanner
     {
-        SqlDataReader EditData(BannerModel bannerModel, string statement);
+        SqlCommand EditData(BannerModel bannerModel, string statement);
     }
 }

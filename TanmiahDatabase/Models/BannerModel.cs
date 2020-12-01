@@ -23,7 +23,8 @@ namespace TanmiahDatabase.Models
         [StringLength(250, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 20)]
         [Display(Name ="Product Description")]
         public string ProductDescription { get; set; }
-        [DisplayName("Product Image")]
+        //[DisplayName("Product Image")]
+        [DataType(DataType.Upload)]
         public string ProductImage { get; set; }
 
     }

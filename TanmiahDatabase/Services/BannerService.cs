@@ -77,6 +77,7 @@ namespace TanmiahDatabase.Services
                 bannerModel.ProductType = dtblBanner.Rows[0][1].ToString();
                 bannerModel.ProductTitle = dtblBanner.Rows[0][2].ToString();
                 bannerModel.ProductDescription = dtblBanner.Rows[0][3].ToString();
+
                 bannerModel.ProductImage = dtblBanner.Rows[0][4].ToString();
             }
             return bannerModel;
@@ -85,7 +86,7 @@ namespace TanmiahDatabase.Services
 
     public class EditBanner : IEditBanner
     {
-        public SqlDataReader EditData(BannerModel bannerModel, string statement)
+        public SqlCommand EditData(BannerModel bannerModel, string statement)
         {
             using (SqlConnection sqlCon = new SqlConnection(Sql.ConnectionString))
             {
@@ -98,9 +99,9 @@ namespace TanmiahDatabase.Services
                 sqlCmd.Parameters.AddWithValue("@prodImage", bannerModel.ProductImage);
                 sqlCmd.Parameters.AddWithValue("@StatementType", statement);
                 sqlCon.Open();
-                SqlDataReader sqlread = sqlCmd.ExecuteReader();
+                sqlCmd.ExecuteNonQuery();
                 sqlCon.Close();
-                return sqlread;
+                return sqlCmd;
             }
         }
     }

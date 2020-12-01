@@ -6,7 +6,7 @@
 
 
 
-@using (Html.BeginForm("Create", "Banner", FormMethod.Post, new { @id = "bannerform", @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Create", "Banner", FormMethod.Post, new { @id = "bannerform", @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
@@ -16,15 +16,15 @@
         <h4>BannerModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-        
+
+
         @*<div class="form-group">
-            @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.(model => model.ProductID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.(model => model.ProductID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,9 +53,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control", @type = "file", id = "file", onchange="show(this)" } })
                 @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
+                <img src="@ViewBag.ImageUrl" id="user_img" width="250" height="280" />
+
+
             </div>
+
         </div>
 
         <div class="form-group">
@@ -65,11 +69,27 @@
         </div>
         @Html.ActionLink("Back to List", "Index")
     </div>
+
+
+
+
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/Scripts/jquery.validate.js")
         @Scripts.Render("~/Scripts/script-custom-validator.js")
     }
+    <script type="text/javascript">
+        function show(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#user_img').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 }
 
 

@@ -64,11 +64,21 @@ namespace TanmiahDatabase.Controllers
 
         // POST: Banner/Create
         [HttpPost]
-        public ActionResult Create(BannerModel bannerModel)
+        public ActionResult Create(BannerModel bannerModel, HttpPostedFileBase ProductImage)
         {
-            if (ModelState.IsValid) { 
-            SqlDataReader sqlcmd = CreateBannerInt.CreateData(bannerModel);
-            return RedirectToAction("Index", "Home"); }
+            if (ProductImage != null)
+            {
+                string namefile = Path.GetFileName(ProductImage.FileName);
+                string path = Path.Combine(Server.MapPath("~/BannerImages"), namefile);
+                bannerModel.ProductImage = ProductImage.FileName;
+                ProductImage.SaveAs(path);
+                ViewBag.ImageUrl = "~/BannerImages" + namefile;
+            }
+            if (ModelState.IsValid)
+            {
+                SqlDataReader sqlcmd = CreateBannerInt.CreateData(bannerModel);
+                return RedirectToAction("Index", "Home");
+            }
             else
             {
                 return View(bannerModel);
@@ -95,26 +105,25 @@ namespace TanmiahDatabase.Controllers
 
         // POST: Banner/Edit/5
         [HttpPost]
-        public ActionResult Edit(BannerModel bannerModel)
+        public ActionResult Edit(BannerModel bannerModel, HttpPostedFileBase ProductImage)
         {
-            //, HttpPostedFileBase ProdImage
-
-            //if (ProdImage != null)
-            //{
-            //    string fileName = Path.GetFileName(ProdImage.FileName);
-            //    string path = Path.Combine(Server.MapPath("~/BannerImages"), fileName);
-            //    bannerModel.ProductImage = ProdImage.FileName;
-            //    ProdImage.SaveAs(Server.MapPath(path));
-
-            //}
+            SqlCommand sqlCmd = new SqlCommand();
+            if (ProductImage != null)
+            {
+                string namefile = Path.GetFileName(ProductImage.FileName);
+                string path = Path.Combine(Server.MapPath("~/BannerImages"), namefile);
+                bannerModel.ProductImage = ProductImage.FileName;
+                ProductImage.SaveAs(path);
+            }
             if (ModelState.IsValid)
             {
-                SqlDataReader sqlCmd = EditBannerInt.EditData(bannerModel, "Update");
+                sqlCmd = EditBannerInt.EditData(bannerModel, "Update");
                 return RedirectToAction("Index", "Home");
             }
-            return View(bannerModel);
-
-
+            else
+            {
+                return View(bannerModel);
+            }
         }
 
         [HttpGet]
