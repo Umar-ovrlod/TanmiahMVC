@@ -32,7 +32,7 @@ namespace TanmiahDatabase.Controllers
         }
 
         
-
+    
         // GET: Banner
         public ActionResult Index()
         {
@@ -114,6 +114,7 @@ namespace TanmiahDatabase.Controllers
                 string path = Path.Combine(Server.MapPath("~/BannerImages"), namefile);
                 bannerModel.ProductImage = ProductImage.FileName;
                 ProductImage.SaveAs(path);
+                ViewBag.ImageUrl = "~/BannerImages" + namefile;
             }
             if (ModelState.IsValid)
             {
